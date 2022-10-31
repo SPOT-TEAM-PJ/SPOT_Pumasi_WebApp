@@ -9,6 +9,7 @@ import DesktopBottom from './components/Desktop/Desktop_bottom';
 import LandingPage from './pages/LandingPage/LandingPage';
 
 function App() {
+  // resize event를 통해 반응형웹 구현
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const handleResize = () => {
     setWindowSize(window.innerWidth);
@@ -19,13 +20,21 @@ function App() {
       window.removeEventListener('resize', handleResize);
     };
   });
+
+  // route 중복 제거
+  function AppRoutes() {
+    return (
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+      </Routes>
+    );
+  }
+
   return (
     <BrowserRouter>
       {parseInt(windowSize) <= 450 ? (
         <div className='App'>
-          <Routes>
-            <Route path='/' element={<LandingPage />} />
-          </Routes>
+          <AppRoutes />
         </div>
       ) : (
         <>
@@ -37,9 +46,7 @@ function App() {
           <div className='Desktop_wrapper'>
             <DesktopTop />
             <div className='App'>
-              <Routes>
-                <Route path='/' element={<LandingPage />} />
-              </Routes>
+              <AppRoutes />
             </div>
             <DesktopBottom />
           </div>

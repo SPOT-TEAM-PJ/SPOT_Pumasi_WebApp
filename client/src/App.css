@@ -121,6 +121,7 @@ table {
     width: 273px;
     height: 466px;
     background-color: #fff;
+    overflow: scroll;
   }
   .Desktop_wrapper {
     width: 273px;
