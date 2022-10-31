@@ -119,13 +119,13 @@ table {
   }
   .App {
     width: 273px;
-    height: 466px;
+    height: 463px;
     background-color: #fff;
     overflow: scroll;
   }
   .Desktop_wrapper {
-    width: 273px;
-    height: 591px;
+    width: 313px;
+    height: 621px;
     background-color: #000;
     border: #000 solid 20px;
     border-radius: 40px;

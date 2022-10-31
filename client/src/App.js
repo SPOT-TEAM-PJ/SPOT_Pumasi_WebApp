@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import "antd/dist/antd.css";
+
+import Header from './components/Header/Header';
 
 import DesktopTop from './components/Desktop/Desktop_top';
 import DesktopBottom from './components/Desktop/Desktop_bottom';
@@ -34,6 +37,7 @@ function App() {
     <BrowserRouter>
       {parseInt(windowSize) <= 450 ? (
         <div className='App'>
+          <Header />
           <AppRoutes />
         </div>
       ) : (
@@ -46,6 +50,7 @@ function App() {
           <div className='Desktop_wrapper'>
             <DesktopTop />
             <div className='App'>
+              <Header />
               <AppRoutes />
             </div>
             <DesktopBottom />

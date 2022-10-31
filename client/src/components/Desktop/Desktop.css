@@ -1,9 +1,10 @@
 .Desktop_top {
-  height: 63px;
+  height: 60px;
   background-color: #fff;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom: gray solid 2px;
+  overflow: hidden;
 }
 .Desktop_bottom {
   height: 58px;
@@ -13,13 +14,14 @@
   border-top: gray solid 2px;
 }
 .Desktop_top_icon {
-  height: 15px;
-  width: 15px;
+  height: 14px;
+  width: 14px;
   margin-right: 2.5px;
   margin-left: 2.5px;
 }
 .Desktop_top_notch {
   display: flex;
+  height: 20px;
   justify-content: space-between;
 }
 .Desktop_notch_center {
@@ -45,7 +47,6 @@
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 .Desktop_bottom_over {
   display: flex;
@@ -56,8 +57,8 @@
   margin-bottom: 15px;
 }
 .Desktop_bottom_icon {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 }
 .Desktop_bottom_under {
   background-color: gray;
