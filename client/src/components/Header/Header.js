@@ -7,21 +7,39 @@ import { Button, Badge } from 'antd';
 
 const HeaderStyle = styled.div`
   padding: 10px;
-  display: flex ;
+  display: flex;
   justify-content: space-between;
   img {
-    width: 25%;
+    width: 28%;
   }
 `;
+const UnderLine = styled.div`
+  width: 80%;
+  height: 2px;
+  background-color: darkgray;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 // dummy state
 const user = true;
 
 const Header = () => {
   return (
-    <HeaderStyle>
-      <img src={Logo} alt='logo' />
-      {user && <Button shape='circle' icon={<BellOutlined />} />}
-    </HeaderStyle>
+    <>
+      <HeaderStyle>
+        <img src={Logo} alt='logo' />
+        {user && (
+          <Button
+            shape='circle'
+            size='large'
+            clolor='blue'
+            icon={<BellOutlined />}
+          />
+        )}
+      </HeaderStyle>
+      <UnderLine />
+    </>
   );
 };
 
