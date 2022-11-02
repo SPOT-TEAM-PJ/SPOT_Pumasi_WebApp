@@ -10,6 +10,7 @@ import DesktopBottom from './components/Desktop/Desktop_bottom';
 
 // pages
 import LandingPage from './pages/LandingPage/LandingPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
 
 function App() {
   // resize event를 통해 반응형웹 구현
