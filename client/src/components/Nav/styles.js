@@ -5,11 +5,11 @@ export const NavWrapper = styled.div`
   grid-template-columns: repeat(4, auto);
   gap: 2%;
   border-top: solid #dfdbdb 1.5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   background-color: #f9f5f5;
   box-shadow: 0px 8px 6px -6px #aeaaaa;
-  width: 450px;
+  width: 100%;
 `;
 
 export const NavItem = styled.div`
@@ -21,5 +21,5 @@ export const NavItem = styled.div`
 `;
 
 export const NavDescription = styled.div`
-  padding-top: 5px;
+  padding-top: 3px;
 `;

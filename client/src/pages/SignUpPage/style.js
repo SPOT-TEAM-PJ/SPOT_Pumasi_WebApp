@@ -5,33 +5,35 @@ import styled from 'styled-components';
 // SignUpPage
 
 export const SignUpPageWrapper = styled.div`
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 5px;
+  padding-top: 2px;
+  padding-bottom: 3px;
   background-color: #fdfdbd;
-  width: 450px;
+  width: 100%;
   color: rgb(83, 82, 82);
+  border-radius: 10px;
 `;
 
 export const Title = styled.h4`
-  margin: 15px 20px;
+  margin: 13px 20px;
   color: black;
 `;
+
 export const Wrapper = styled.div`
-  padding: 20px 10px;
+  padding: 5px 10px;
   border-radius: 10px;
-  margin: 25px 20px;
+  margin: 5px 10px;
   background-color: #fff;
   box-shadow: 0px 8px 6px -6px #f0d662;
 `;
 
 export const NumberWrapper = styled.div`
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top:8px;
-  padding-left:10%;
-  padding-right:10%
+  padding-top: 8px;
+  padding-left: 8%;
   margin-top: 6px;
 `;
 
@@ -41,16 +43,15 @@ export const NumberSelectWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
   margin-top: 3px;
 `;
 
 export const NumberSelect = styled.select`
-  width: 25%;
-  height: 29px;
+  width: 30%;
+  height: 25px;
   border-radius: 5px;
   border: solid 2px rgb(83, 82, 82);
-  padding-left: 12px;
+  padding-left: 1%;
   :focus {
     outline: none !important;
     border-color: #f0d662;
@@ -59,11 +60,10 @@ export const NumberSelect = styled.select`
 `;
 
 export const NumberInput = styled.input`
-  width: 35%;
+  width: 30%;
   height: 25px;
   border-radius: 5px;
   border: solid 2px rgb(83, 82, 82);
-  padding-left: 12px;
   :focus {
     outline: none !important;
     border-color: #f0d662;
@@ -76,22 +76,23 @@ export const FileWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 10%;
-  padding-top: 15px;
-  width: 25%;
+  margin: 10px 0;
+  margin-left: 10%;
+  width: 40%;
 `;
 
 export const ProFileWrapper = styled.div`
-  padding: 20px 20px;
+  padding: 5px 10px;
   border: solid #f0d662 2px;
-  background-color: #efd978;
   border-radius: 10px;
-  margin: 10px;
+  margin: 1px;
+  box-shadow: 5px 8px 6px -6px #f0d662;
+  margin-bottom: 15px;
 `;
 
 export const BtnWrapper = styled.div`
-  width: 90%;
-  margin: 10px 22px;
+  width: 92%;
+  margin: 15px 4%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,7 +104,6 @@ export const SignUpButton = styled.button`
   background-color: yellow;
   border: none;
   box-shadow: 0px 8px 6px -6px #f0d662;
-  margin-bottom: 20px;
   cursor: pointer;
   :hover {
     box-shadow: 0 0 10px #f0d662;
@@ -112,18 +112,26 @@ export const SignUpButton = styled.button`
 
 // Input
 export const InputWrapper = styled.div`
-  width: 80%;
-  padding: 8px 10%;
+  width: 90%;
+  padding-left: 10%;
+  padding-top: 8px;
   margin-top: 5px;
 `;
 
 export const InputText = styled.input`
+  // input창 밑부분만
+  border: none;
+  border-bottom: solid 2px rgb(83, 82, 82);
+
+  // input창 있는거
+  // border-bottom: solid gray 1px;
+  // border: solid 2px rgb(83, 82, 82);
+  // border-radius: 5px;
+
   margin-top: 3px;
-  border-radius: 5px;
   width: 100%;
   height: 25px;
-  border: 0;
-  border: solid 2px rgb(83, 82, 82);
+
   :focus {
     outline: none !important;
     border-color: #f0d662;
@@ -136,20 +144,21 @@ export const InputText = styled.input`
 export const GenderWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: left;
-  width: 81%;
-  padding: 8px 10%;
+  width: 80%;
+  padding: 8px 5%;
   margin-top: 5px;
+  margin-left: 5%;
 `;
 
 export const GenderSelect = styled.select`
   border: solid rgb(83, 82, 82) 2px;
   border-radius: 5px;
-  width: 50%;
+  width: 60%;
   height: 30px;
   font-size: 15px;
-  padding-left: 18%;
+  padding-left: 5%;
   color: rgb(83, 82, 82);
   :focus {
     outline: none !important;

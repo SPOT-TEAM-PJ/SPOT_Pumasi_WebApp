@@ -69,7 +69,7 @@ const SignUpPage = () => {
 
       <Title>프로필 작성</Title>
       <Wrapper>
-        <h4 style={{ paddingLeft: '10px' }}>부모</h4>
+        <h4 style={{ paddingLeft: '5px', paddingTop: '7px' }}>부모</h4>
         <ProFileWrapper>
           <div>
             <Input text={'이름'} value={Name} onChange={onChangeName} />
@@ -124,7 +124,7 @@ const SignUpPage = () => {
           </div>
         </ProFileWrapper>
 
-        <h4 style={{ paddingLeft: '10px' }}>
+        <h4 style={{ paddingLeft: '5px', paddingTop: '7px' }}>
           자녀
           <span>
             {' '}

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import "antd/dist/antd.css";
+import 'antd/dist/antd.css';
 
 import Header from './components/Header/Header';
-
+import Nav from './components/Nav/Nav';
 import DesktopTop from './components/Desktop/Desktop_top';
 import DesktopBottom from './components/Desktop/Desktop_bottom';
 
@@ -30,6 +30,7 @@ function App() {
     return (
       <Routes>
         <Route path='/' element={<LandingPage />} />
+        <Route path='/signup' element={<SignUpPage />} />
       </Routes>
     );
   }
@@ -40,6 +41,7 @@ function App() {
         <div className='App'>
           <Header />
           <AppRoutes />
+          <Nav />
         </div>
       ) : (
         <>
@@ -54,6 +56,7 @@ function App() {
               <Header />
               <AppRoutes />
             </div>
+            <Nav />
             <DesktopBottom />
           </div>
         </>

@@ -109,8 +109,8 @@ table {
 }
 
 .App {
-  padding-left: 1.5vw;
-  padding-right: 1.5vw;
+  /* padding-left: 1vw;
+  padding-right: 1vw; */
 }
 
 @media (min-width: 450px) {
@@ -124,9 +124,9 @@ table {
   }
   .App {
     width: 273px;
-    height: 463px;
+    height: 400px;
     background-color: #fff;
-    overflow: scroll;
+    overflow-x: hidden;
   }
   .Desktop_wrapper {
     width: 313px;
