@@ -111,6 +111,12 @@ table {
 .App {
   /* padding-left: 1vw;
   padding-right: 1vw; */
+  padding-bottom: 57px;
+}
+.navWrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 @media (min-width: 450px) {
@@ -127,6 +133,7 @@ table {
     height: 400px;
     background-color: #fff;
     overflow-x: hidden;
+    padding-bottom: 0px;
   }
   .Desktop_wrapper {
     width: 313px;

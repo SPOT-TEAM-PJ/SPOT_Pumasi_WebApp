@@ -38,11 +38,15 @@ function App() {
   return (
     <BrowserRouter>
       {parseInt(windowSize) <= 450 ? (
-        <div className='App'>
-          <Header />
-          <AppRoutes />
-          <Nav />
-        </div>
+        <>
+          <div className='App'>
+            <Header />
+            <AppRoutes />
+          </div>
+          <div className='navWrapper'>
+            <Nav />
+          </div>
+        </>
       ) : (
         <>
           <div className='Desktop_info'>

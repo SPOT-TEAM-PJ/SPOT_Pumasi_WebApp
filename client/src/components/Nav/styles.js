@@ -10,6 +10,7 @@ export const NavWrapper = styled.div`
   background-color: #f9f5f5;
   box-shadow: 0px 8px 6px -6px #aeaaaa;
   width: 100%;
+  height: 57px;
 `;
 
 export const NavItem = styled.div`
