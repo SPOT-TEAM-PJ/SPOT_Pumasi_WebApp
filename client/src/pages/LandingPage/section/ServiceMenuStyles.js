@@ -22,6 +22,9 @@ export const InfoWrapper = styled.div`
   }
 `;
 export const ServiceList = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 70%;
 `;
 export const ServiceButton = styled(Button)`

@@ -6,11 +6,17 @@ import { BellOutlined } from '@ant-design/icons';
 import { Button, Badge } from 'antd';
 
 const HeaderStyle = styled.div`
+  height: 55px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
   img {
-    width: 28%;
+    width: 25%;
+  }
+  Button {
+    aspect-ratio: 1/1;
   }
 `;
 const UnderLine = styled.div`
@@ -19,6 +25,7 @@ const UnderLine = styled.div`
   background-color: darkgray;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
 `;
 
 // dummy state

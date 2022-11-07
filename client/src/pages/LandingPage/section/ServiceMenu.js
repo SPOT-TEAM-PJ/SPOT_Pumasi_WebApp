@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   ServiceList,
   ServiceButton,
@@ -8,6 +9,7 @@ import {
 } from './ServiceMenuStyles';
 import info from '../../../util/images/info.png';
 const ServiceMenu = () => {
+  const navigate = useNavigate();
   return (
     <ServiceMenuWrapper>
       <h2>Service Menu</h2>
@@ -19,7 +21,14 @@ const ServiceMenu = () => {
           <ServiceButton type='primary'>
             {'마이페이지 & 친구목록'}
           </ServiceButton>
-          <ServiceButton type='primary'>서비스 이용</ServiceButton>
+          <ServiceButton
+            type='primary'
+            onClick={() => {
+              navigate('/offerer');
+            }}
+          >
+            서비스 이용
+          </ServiceButton>
           <ServiceButton type='primary'>서비스 제공</ServiceButton>
         </ServiceList>
       </MenuGrop>
