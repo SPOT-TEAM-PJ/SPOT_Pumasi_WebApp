@@ -11,7 +11,12 @@ import DesktopBottom from './components/Desktop/Desktop_bottom';
 // pages
 import LandingPage from './pages/LandingPage/LandingPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
+<<<<<<< Updated upstream
 import OffererPage from './pages/OffererPage/OffererPage';
+=======
+import ProfileEditPage from './pages/MyPage/ProfileEditPage';
+import ProfilePage from './pages/MyPage/ProfilePage';
+>>>>>>> Stashed changes
 
 function App() {
   // resize event를 통해 반응형웹 구현
@@ -32,7 +37,12 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/signup' element={<SignUpPage />} />
+<<<<<<< Updated upstream
         <Route path='/offerer' element={<OffererPage />} />
+=======
+        <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/edit' element={<ProfileEditPage />} />
+>>>>>>> Stashed changes
       </Routes>
     );
   }
