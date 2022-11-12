@@ -9,12 +9,17 @@ import {
   GenderSelect,
 } from '../style';
 
-function ChildInformation({ value, onChange }) {
+function ChildInformation({ child, onChange, gender }) {
   const fileInput = useRef();
 
-  const [Name, onChangeName] = useInput('');
-  const [School, onChangeSchool] = useInput('');
-  const [Age, onChangeAge] = useInput('');
+  if (!child) {
+    child = '';
+  }
+
+  // const [gender, setGender] = useState('남자');
+  // const [name, onChangename] = useInput(child.name);
+  // const [school, onChangeSchool] = useInput(child.school);
+  // const [age, onChangeAge] = useInput(child.age);
 
   const onClickImageUpload = useCallback(() => {
     fileInput.current.click();
@@ -23,25 +28,25 @@ function ChildInformation({ value, onChange }) {
   return (
     <ProFileWrapper>
       <div>
-        <Input text={'이름'} value={Name} onChange={onChangeName} />
+        <Input text={'이름'} value={child.name} onChange={onChange} />
         <GenderWrapper>
           <div>성별</div>
           <GenderSelect
             onChange={(e) => {
               onChange(e.target.value);
             }}
-            value={value}
+            value={gender}
           >
             <option>남자</option>
             <option>여자</option>
           </GenderSelect>
         </GenderWrapper>
 
-        <Input text={'나이'} value={Age} onChange={onChangeAge} />
+        <Input text={'나이'} value={child.age} onChange={onChange} />
         <Input
           text={'학교 및 어린이집'}
-          value={School}
-          onChange={onChangeSchool}
+          value={child.school}
+          onChange={onChange}
         />
         <FileWrapper>
           <div>아동 사진</div>

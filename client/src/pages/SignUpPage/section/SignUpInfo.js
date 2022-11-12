@@ -16,33 +16,72 @@ import {
   BtnWrapper,
   SignUpButton,
 } from '../style';
+//import { dummyData } from '../../../util/dummyData/dummyData';
 
-function SignUpInfo({ title_1, title_2 }) {
+function SignUpInfo({ title_1, title_2, User }) {
   const fileInput = useRef();
-  const [child, setChild] = useState([1]);
 
-  const [userId, onChangeUserId] = useInput('');
-  const [password, onChangePassword] = useInput('');
-  const [nickname, onChangeNickName] = useInput('');
+  if (!User) {
+    User = {
+      parent: {
+        email: '',
+        phoneNumber: '',
+      },
+      children: [{}],
+    };
+  }
 
-  const [Name, onChangeName] = useInput('');
-  const [Address, onChangeAddress] = useInput('');
-  const [Job, onChangeJob] = useInput('');
-  const [JobInfo, onChangeJobInfo] = useInput('');
-  const [Message, onChangeMessage] = useInput('');
+  const email = User.parent.email.split('@');
+  const phoneNumber = User.parent.phoneNumber.split('-');
 
+  const [userId, onChangeUserId] = useInput(User.id);
+  const [password, onChangePassword] = useInput(User.password);
+
+  // 부모 정보
+  const [Name, onChangeName] = useInput(User.parent.name);
+  const [Nickname, onChangeNickName] = useInput(User.parent.nickname);
+  const [Address, onChangeAddress] = useInput(User.parent.address);
+  const [Job, onChangeJob] = useInput(User.parent.job);
+  const [JobInfo, onChangeJobInfo] = useInput(User.parent.jobinfo);
+  const [Message, onChangeMessage] = useInput(User.parent.stateComment);
+  const [Email, onChangeEmail] = useInput(email[0]);
+  const [EmailType, onChangeEmailType] = useState(email[1]);
+  const [PhoneNumberType, onChangePhoneNumberType] = useState(phoneNumber[0]);
+  const [PhoneNumber_1, onChangePhoneNumber_1] = useInput(phoneNumber[1]);
+  const [PhoneNumber_2, onChangePhoneNumber_2] = useInput(phoneNumber[1]);
+
+  // 자식 정보
+  const [children, setChildren] = useState(User.children);
   const [gender, setGender] = useState('남자');
+  const [name, onChangename] = useInput(children.name);
+  const [school, onChangeSchool] = useInput(children.school);
+  const [age, onChangeAge] = useInput(children.age);
 
   const onClickImageUpload = useCallback(() => {
     fileInput.current.click();
   }, [fileInput.current]);
 
   const onSubmitHadler = () => {
-    console.log(gender);
+    const EmailAll = Email + '@' + EmailType;
+    const PhoneNumberAll =
+      PhoneNumberType + '-' + PhoneNumber_1 + '-' + PhoneNumber_2;
+    console.log(
+      userId,
+      password,
+      Nickname,
+      Name,
+      Address,
+      Job,
+      JobInfo,
+      Message,
+      PhoneNumberAll,
+      EmailAll,
+      children
+    );
   };
 
   return (
-    <SignUpPageWrapper>
+    <SignUpPageWrapper onSubmit={onSubmitHadler}>
       <Title>{title_1}</Title>
       <Wrapper>
         <Input text={'아이디'} value={userId} onChange={onChangeUserId} />
@@ -52,7 +91,7 @@ function SignUpInfo({ title_1, title_2 }) {
           value={password}
           onChange={onChangePassword}
         />
-        <Input text={'닉네임'} value={nickname} onChange={onChangeNickName} />
+        <Input text={'닉네임'} value={Nickname} onChange={onChangeNickName} />
         <FileWrapper>
           <div>증명첨부파일</div>
           <PlusSquareOutlined onClick={onClickImageUpload} />
@@ -88,23 +127,51 @@ function SignUpInfo({ title_1, title_2 }) {
             <NumberWrapper>
               <div>핸드폰 번호</div>
               <NumberSelectWrapper>
-                <NumberSelect>
+                <NumberSelect
+                  value={PhoneNumberType}
+                  onChange={(e) => onChangePhoneNumberType(e.target.value)}
+                >
+                  <option>선택</option>
                   <option>010</option>
                   <option>011</option>
                   <option>016</option>
                   <option>017</option>
                   <option>019</option>
                 </NumberSelect>
-                - <NumberInput type={'text'} /> - <NumberInput type={'text'} />
+                -{' '}
+                <NumberInput
+                  type={'text'}
+                  value={PhoneNumber_1}
+                  onChange={onChangePhoneNumber_1}
+                />{' '}
+                -{' '}
+                <NumberInput
+                  type={'text'}
+                  value={PhoneNumber_2}
+                  onChange={onChangePhoneNumber_2}
+                />
               </NumberSelectWrapper>
             </NumberWrapper>
             <NumberWrapper>
               <div>이메일</div>
               <NumberSelectWrapper>
-                <NumberInput type={'email'} style={{ width: '50%' }} />@
-                <NumberSelect style={{ width: '50%' }}>
+                <NumberInput
+                  value={Email}
+                  type={'email'}
+                  style={{ width: '50%' }}
+                  onChange={onChangeEmail}
+                />
+                @
+                <NumberSelect
+                  style={{ width: '50%' }}
+                  value={EmailType}
+                  onChange={(e) => {
+                    onChangeEmailType(e.target.value);
+                  }}
+                >
+                  <option>선택</option>
                   <option>naver.com</option>
-                  <option>google.com</option>
+                  <option>gmail.com</option>
                   <option>daum.net</option>
                 </NumberSelect>
               </NumberSelectWrapper>
@@ -130,24 +197,24 @@ function SignUpInfo({ title_1, title_2 }) {
             {' '}
             <PlusSquareOutlined
               onClick={() => {
-                setChild([...child, 1]);
+                setChildren([...children, 1]);
               }}
             />
           </span>
         </h4>
 
         <div>
-          {child.map((item, id) => (
-            <ChildInformation key={id} value={gender} onChange={setGender} />
+          {children.map((child, id) => (
+            <ChildInformation key={id} child={child} onChange={setGender} />
           ))}
         </div>
       </Wrapper>
 
       <BtnWrapper>
         {title_1 === '회원가입' ? (
-          <SignUpButton onClick={onSubmitHadler}>작성완료</SignUpButton>
+          <SignUpButton>작성완료</SignUpButton>
         ) : (
-          <SignUpButton onClick={onSubmitHadler}>수정</SignUpButton>
+          <SignUpButton>수정</SignUpButton>
         )}
       </BtnWrapper>
     </SignUpPageWrapper>

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import SignUpInfo from '../SignUpPage/section/SignUpInfo';
 import { Avatar } from 'antd';
 import styled from 'styled-components';
+import { dummyData } from '../../util/dummyData/dummyData';
 
 const ImageWrapper = styled.div`
   width: 100%;
@@ -14,6 +15,7 @@ const ProfileEditPage = () => {
   const [Image, setImage] = useState(
     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
   );
+  const User = dummyData()[0];
   const [File, setFile] = useState('');
 
   const fileInput = useRef(null);
@@ -58,7 +60,7 @@ const ProfileEditPage = () => {
           ref={fileInput}
         />
       </ImageWrapper>
-      <SignUpInfo title_1={'가입 정보'} title_2={'나의 정보'} />
+      <SignUpInfo title_1={'가입 정보'} title_2={'나의 정보'} User={User} />
     </div>
   );
 };
