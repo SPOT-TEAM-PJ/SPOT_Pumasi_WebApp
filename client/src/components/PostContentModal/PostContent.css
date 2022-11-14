@@ -1,0 +1,9 @@
+.ant-select-dropdown {
+  z-index: 9999 !important;
+}
+.ant-select {
+  width: 40%;
+}
+.ant-picker-dropdown {
+  z-index: 9999 !important;
+}

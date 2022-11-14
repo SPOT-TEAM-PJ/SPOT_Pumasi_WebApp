@@ -1,7 +1,7 @@
 // 어린이집: 순천향대학교사랑둥지직장어린이집, 행복이어린이집, 아기사랑어린이집
 // 아파트: 경희학성아파트, 대주아파트, 친오애아파트
 
-export const dummydata = () => [
+export const dummydata = [
   {
     id: 1,
     userId: 1,
