@@ -9,6 +9,7 @@ import {
   PostList,
   PostListHeader,
 } from './OffererPageStyles';
+import { useNavigate } from 'react-router-dom';
 
 export const sampleDummy = [
   {
@@ -37,6 +38,7 @@ export const sampleDummy = [
   },
 ];
 const OffererPage = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     var container = document.getElementById('kakaoMap');
     var options = {
@@ -53,7 +55,10 @@ const OffererPage = () => {
         <PostList>
           <PostListHeader>
             <div>List</div>
-            <Button icon={<EditOutlined />}></Button>
+            <Button
+              onClick={() => navigate(`/offererpost`)}
+              icon={<EditOutlined />}
+            />
           </PostListHeader>
           {sampleDummy.map((v) => (
             <PostListContent

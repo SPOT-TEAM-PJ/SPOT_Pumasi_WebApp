@@ -104,3 +104,48 @@ export const PostInfo = styled.div`
   }
 `;
 export const ContentInfo = styled.div``;
+
+export const ServiceTypeArea = styled.div`
+  .ant-radio-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .ant-radio-button-wrapper {
+    border-radius: 10px;
+    border: none;
+  }
+  .ant-radio-button-wrapper::before {
+    width: 0;
+  }
+`;
+
+export const MoveArea = styled.div`
+  display: flex;
+  width: 100%;
+  .needCarWrapper {
+    text-align: center;
+    width: 20%;
+  }
+  .carToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cascaderWrapper {
+    text-align: center;
+    width: 35%;
+    .Cascader {
+      width: 100%;
+    }
+  }
+  .arrowWrapper {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 100%;
+    }
+  }
+`;
