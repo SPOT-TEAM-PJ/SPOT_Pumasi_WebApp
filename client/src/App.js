@@ -12,6 +12,7 @@ import DesktopBottom from './components/Desktop/Desktop_bottom';
 import LandingPage from './pages/LandingPage/LandingPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import OffererPage from './pages/OffererPage/OffererPage';
+import OffererPost from './pages/OffererPage/section/OffererPost';
 
 function App() {
   // resize event를 통해 반응형웹 구현
@@ -33,6 +34,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/offerer' element={<OffererPage />} />
+        <Route path='/offererpost' element={<OffererPost />} />
       </Routes>
     );
   }
