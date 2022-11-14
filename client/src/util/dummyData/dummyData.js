@@ -7,7 +7,6 @@ export const dummyData = () => [
     id: 1,
     userId: 1, //아이디
     password: 1234,
-
     parent: {
       name: '이선정',
       nickname: '시후맘',
@@ -97,7 +96,6 @@ export const dummyData = () => [
       },
     ],
   },
-
   {
     // dummydata2
     id: 2,
@@ -116,7 +114,7 @@ export const dummyData = () => [
     },
     children: [
       {
-        childId: 1,
+        childId: 2,
         school: '행복이어린이집',
         age: 5,
         name: '정수민',
@@ -126,7 +124,7 @@ export const dummyData = () => [
     ],
     post: [
       {
-        postId: 1,
+        postId: 2,
         postType: 1, // 0 구인 1 구직
         complement: false, // 마감 유무
         date: '22.11.09',
@@ -185,4 +183,50 @@ export const dummyData = () => [
       },
     ],
   },
+  {
+    // dummydata3
+    id: 3,
+    userId: 3,
+    password: 4321,
+    parent: {
+      name: '김성호',
+      nickname: '성수맘',
+      job: '교사',
+      jobinfo: '아산',
+      phoneNumber: '010-2211-3322',
+      stateComment: 'test post 3',
+      email: 'test3@gmail.com',
+      address: '충청남도 아산시 신창면',
+      image: '/',
+    },
+    children: [
+      {
+        childId: 3,
+        school: '행복이어린이집',
+        age: 5,
+        name: '김수정',
+        gender: '여자',
+        image: '/',
+      },
+    ],
+    post: [
+      {
+        postId: 3,
+        postType: 1, // 0 구인 1 구직
+        complement: false, // 마감 유무
+        date: '22.11.09',
+        content: {
+          serviceType: 0, // 0 등원, 1 하원
+          postTilte: '등원 해드립니다.',
+          needCar: false, // false 무관, true 필요
+          startingPoint: '경희학성아파트',
+          endPoint: '행복이어린이집',
+          startTime: '09.00',
+          postContent: '행복이 어린이집에서 등원 해드립니다.',
+        },
+        message: [],
+      },
+    ],
+  },
+
 ];
