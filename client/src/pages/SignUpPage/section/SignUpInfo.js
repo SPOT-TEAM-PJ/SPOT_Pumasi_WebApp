@@ -1,26 +1,20 @@
-import React, { useRef, useCallback, useState } from 'react';
-import { PlusSquareOutlined } from '@ant-design/icons';
+import React, { useState } from 'react';
+import { PlusSquareOutlined, PlusOutlined } from '@ant-design/icons';
+import { Upload, Form } from 'antd';
 import ChildInformation from './ChildInformation';
-import Input from './Input';
-import useInput from '../../../hooks/useInput';
 import {
-  SignUpPageWrapper,
-  Title,
+  SignUpPage,
   Wrapper,
-  NumberWrapper,
-  NumberSelectWrapper,
-  NumberSelect,
-  NumberInput,
-  FileWrapper,
+  Item,
+  Title,
   ProFileWrapper,
-  BtnWrapper,
-  SignUpButton,
+  InputArea,
+  NumberSelect,
+  SelectOption,
+  Btn,
 } from '../style';
-//import { dummyData } from '../../../util/dummyData/dummyData';
 
-function SignUpInfo({ title_1, title_2, User }) {
-  const fileInput = useRef();
-
+const SignUpInfo = ({ title1, title2, User }) => {
   if (!User) {
     User = {
       parent: {
@@ -31,194 +25,127 @@ function SignUpInfo({ title_1, title_2, User }) {
     };
   }
 
-  const email = User.parent.email.split('@');
-  const phoneNumber = User.parent.phoneNumber.split('-');
+  const [children, setChildren] = useState([0]);
 
-  const [userId, onChangeUserId] = useInput(User.id);
-  const [password, onChangePassword] = useInput(User.password);
-
-  // 부모 정보
-  const [Name, onChangeName] = useInput(User.parent.name);
-  const [Nickname, onChangeNickName] = useInput(User.parent.nickname);
-  const [Address, onChangeAddress] = useInput(User.parent.address);
-  const [Job, onChangeJob] = useInput(User.parent.job);
-  const [JobInfo, onChangeJobInfo] = useInput(User.parent.jobinfo);
-  const [Message, onChangeMessage] = useInput(User.parent.stateComment);
-  const [Email, onChangeEmail] = useInput(email[0]);
-  const [EmailType, onChangeEmailType] = useState(email[1]);
-  const [PhoneNumberType, onChangePhoneNumberType] = useState(phoneNumber[0]);
-  const [PhoneNumber_1, onChangePhoneNumber_1] = useInput(phoneNumber[1]);
-  const [PhoneNumber_2, onChangePhoneNumber_2] = useInput(phoneNumber[1]);
-
-  // 자식 정보
-  const [children, setChildren] = useState(User.children);
-  const [gender, setGender] = useState('남자');
-  const [name, onChangename] = useInput(children.name);
-  const [school, onChangeSchool] = useInput(children.school);
-  const [age, onChangeAge] = useInput(children.age);
-
-  const onClickImageUpload = useCallback(() => {
-    fileInput.current.click();
-  }, [fileInput.current]);
-
-  const onSubmitHadler = () => {
-    const EmailAll = Email + '@' + EmailType;
-    const PhoneNumberAll =
-      PhoneNumberType + '-' + PhoneNumber_1 + '-' + PhoneNumber_2;
-    console.log(
-      userId,
-      password,
-      Nickname,
-      Name,
-      Address,
-      Job,
-      JobInfo,
-      Message,
-      PhoneNumberAll,
-      EmailAll,
-      children
-    );
+  const onSubmit = (values) => {
+    console.log(values);
   };
-
+  console.log(title1, title2, User);
   return (
-    <SignUpPageWrapper onSubmit={onSubmitHadler}>
-      <Title>{title_1}</Title>
-      <Wrapper>
-        <Input text={'아이디'} value={userId} onChange={onChangeUserId} />
-        <Input text={'비밀번호'} value={password} onChange={onChangePassword} />
-        <Input
-          text={'비밀번호 확인'}
-          value={password}
-          onChange={onChangePassword}
-        />
-        <Input text={'닉네임'} value={Nickname} onChange={onChangeNickName} />
-        <FileWrapper>
-          <div>증명첨부파일</div>
-          <PlusSquareOutlined onClick={onClickImageUpload} />
-          <input
-            type='file'
-            name='file'
-            multiple
-            hidden
-            ref={fileInput}
-            //onChange={onChangeFile}
-          />
-        </FileWrapper>
-      </Wrapper>
-
-      <Title>{title_2}</Title>
-      <Wrapper>
-        <h4 style={{ paddingLeft: '5px', paddingTop: '7px' }}>부모</h4>
-        <ProFileWrapper>
-          <div>
-            <Input text={'이름'} value={Name} onChange={onChangeName} />
-            <Input text={'주소'} value={Address} onChange={onChangeAddress} />
-            <Input text={'직업'} value={Job} onChange={onChangeJob} />
-            <Input
-              text={'직장정보'}
-              value={JobInfo}
-              onChange={onChangeJobInfo}
-            />
-            <Input
-              text={'상태메세지'}
-              value={Message}
-              onChange={onChangeMessage}
-            />
-            <NumberWrapper>
-              <div>핸드폰 번호</div>
-              <NumberSelectWrapper>
-                <NumberSelect
-                  value={PhoneNumberType}
-                  onChange={(e) => onChangePhoneNumberType(e.target.value)}
-                >
-                  <option>선택</option>
-                  <option>010</option>
-                  <option>011</option>
-                  <option>016</option>
-                  <option>017</option>
-                  <option>019</option>
-                </NumberSelect>
-                -{' '}
-                <NumberInput
-                  type={'text'}
-                  value={PhoneNumber_1}
-                  onChange={onChangePhoneNumber_1}
-                />{' '}
-                -{' '}
-                <NumberInput
-                  type={'text'}
-                  value={PhoneNumber_2}
-                  onChange={onChangePhoneNumber_2}
-                />
-              </NumberSelectWrapper>
-            </NumberWrapper>
-            <NumberWrapper>
-              <div>이메일</div>
-              <NumberSelectWrapper>
-                <NumberInput
-                  value={Email}
-                  type={'email'}
-                  style={{ width: '50%' }}
-                  onChange={onChangeEmail}
-                />
-                @
-                <NumberSelect
-                  style={{ width: '50%' }}
-                  value={EmailType}
-                  onChange={(e) => {
-                    onChangeEmailType(e.target.value);
+    <>
+      <SignUpPage
+        onFinish={onSubmit}
+        labelCol={{
+          span: 4,
+        }}
+        wrapperCol={{
+          span: 14,
+        }}
+        layout='horizontal'
+      >
+        <Title>{title1}</Title>
+        <Wrapper>
+          <Item label='아이디' name='Name'>
+            <InputArea />
+          </Item>
+          <Item label='비밀번호'>
+            <InputArea />
+          </Item>
+          <Item label='비밀번호 확인'>
+            <InputArea />
+          </Item>
+          <Item label='닉네임'>
+            <InputArea />
+          </Item>
+          <Item label='증명사진 첨부' valuePropName='fileList'>
+            <Upload action='/upload.do' listType='picture-card'>
+              <div>
+                <PlusOutlined />
+                <div
+                  style={{
+                    marginTop: 8,
                   }}
                 >
-                  <option>선택</option>
-                  <option>naver.com</option>
-                  <option>gmail.com</option>
-                  <option>daum.net</option>
-                </NumberSelect>
-              </NumberSelectWrapper>
-            </NumberWrapper>
-            <FileWrapper>
-              <div>부모 사진</div>
-              <PlusSquareOutlined onClick={onClickImageUpload} />
-              <input
-                type='file'
-                name='file'
-                multiple
-                hidden
-                ref={fileInput}
-                //onChange={onChangeFile}
+                  Upload
+                </div>
+              </div>
+            </Upload>
+          </Item>
+        </Wrapper>
+
+        <Title>{title2}</Title>
+        <Wrapper>
+          <Title>부모 정보</Title>
+          <ProFileWrapper>
+            <Item label='이름'>
+              <InputArea />
+            </Item>
+            <Item label='주소'>
+              <InputArea />
+            </Item>
+            <Item label='직업'>
+              <InputArea />
+            </Item>
+            <Item label='직장정보'>
+              <InputArea />
+            </Item>
+            <Item label='상태메시지'>
+              <InputArea />
+            </Item>
+
+            <Item label='핸드폰 번호'>
+              <NumberSelect>
+                <SelectOption value='010'> 010</SelectOption>
+                <SelectOption value='011'>011</SelectOption>
+                <SelectOption value='016'>016</SelectOption>
+                <SelectOption value='017'>017</SelectOption>
+                <SelectOption value='019'>019</SelectOption>
+              </NumberSelect>
+            </Item>
+            <Item label='이메일'>
+              <NumberSelect>
+                <SelectOption value='naver'> naver.com</SelectOption>
+                <SelectOption value='gmail'>gmail.com</SelectOption>
+                <SelectOption value='daum'>daum.net</SelectOption>
+              </NumberSelect>
+            </Item>
+          </ProFileWrapper>
+        </Wrapper>
+
+        <Wrapper>
+          <h4 style={{ paddingLeft: '10px', paddingTop: '7px' }}>
+            자녀
+            <span>
+              {' '}
+              <PlusSquareOutlined
+                onClick={() => {
+                  setChildren([...children, 1]);
+                }}
               />
-            </FileWrapper>
+            </span>
+          </h4>
+
+          <div>
+            {children.map((child, id) => (
+              <ProFileWrapper>
+                <ChildInformation key={id} child={child} />
+              </ProFileWrapper>
+            ))}
           </div>
-        </ProFileWrapper>
-
-        <h4 style={{ paddingLeft: '5px', paddingTop: '7px' }}>
-          자녀
-          <span>
-            {' '}
-            <PlusSquareOutlined
-              onClick={() => {
-                setChildren([...children, 1]);
-              }}
-            />
-          </span>
-        </h4>
-
-        <div>
-          {children.map((child, id) => (
-            <ChildInformation key={id} child={child} onChange={setGender} />
-          ))}
-        </div>
-      </Wrapper>
-
-      <BtnWrapper>
-        {title_1 === '회원가입' ? (
-          <SignUpButton>작성완료</SignUpButton>
-        ) : (
-          <SignUpButton>수정</SignUpButton>
-        )}
-      </BtnWrapper>
-    </SignUpPageWrapper>
+        </Wrapper>
+        {
+          (title1 = '회원가입' ? (
+            <Form.Item>
+              <Btn htmlType='submit'>작성완료</Btn>
+            </Form.Item>
+          ) : (
+            <Form.Item>
+              <Btn htmlType='submit'>수정완료</Btn>
+            </Form.Item>
+          ))
+        }
+      </SignUpPage>
+    </>
   );
-}
-
+};
 export default SignUpInfo;

@@ -60,7 +60,7 @@ const ProfileEditPage = () => {
           ref={fileInput}
         />
       </ImageWrapper>
-      <SignUpInfo title_1={'가입 정보'} title_2={'나의 정보'} User={User} />
+      <SignUpInfo title1={'가입 정보'} title2={'나의 정보'} User={User} />
     </div>
   );
 };
