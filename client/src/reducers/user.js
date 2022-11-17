@@ -1,9 +1,7 @@
 import produce from '../util/produce';
 
 export const initialState = {
-  logInLoading: false,
-  logInDone: false,
-  logInError: null,
+  childname: '홍길동',
   logOutLoading: false,
   logOutDone: false,
   logOutError: null,

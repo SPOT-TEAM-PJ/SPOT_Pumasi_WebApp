@@ -25,12 +25,33 @@ const SignUpInfo = ({ title1, title2, User }) => {
     };
   }
 
-  const [children, setChildren] = useState([0]);
+  const [form] = Form.useForm();
+  const [children, setChildren] = useState([...User.children]);
+
+  form.setFieldsValue({
+    //회원 정보
+    userId: User.userId,
+    password: User.password,
+    nickname: User.parent.nickname,
+    image: User.parent.image,
+    //부모 정보
+    name: User.parent.name,
+    address: User.parent.address,
+    job: User.parent.job,
+    jobinfo: User.parent.jobinfo,
+    stateComment: User.parent.stateComment,
+
+    //자식 정보
+    childrenname: '',
+    gender: '',
+    age: '',
+    school: '',
+  });
 
   const onSubmit = (values) => {
     console.log(values);
   };
-  console.log(title1, title2, User);
+
   return (
     <>
       <SignUpPage
@@ -42,20 +63,21 @@ const SignUpInfo = ({ title1, title2, User }) => {
           span: 14,
         }}
         layout='horizontal'
+        form={form}
       >
         <Title>{title1}</Title>
         <Wrapper>
-          <Item label='아이디' name='Name'>
-            <InputArea />
+          <Item label='아이디' name='userId'>
+            <InputArea className='userId' />
           </Item>
-          <Item label='비밀번호'>
-            <InputArea />
+          <Item label='비밀번호' name='password'>
+            <InputArea className='password' />
           </Item>
           <Item label='비밀번호 확인'>
             <InputArea />
           </Item>
-          <Item label='닉네임'>
-            <InputArea />
+          <Item label='닉네임' name='nickname'>
+            <InputArea className='nickname' />
           </Item>
           <Item label='증명사진 첨부' valuePropName='fileList'>
             <Upload action='/upload.do' listType='picture-card'>
@@ -65,6 +87,7 @@ const SignUpInfo = ({ title1, title2, User }) => {
                   style={{
                     marginTop: 8,
                   }}
+                  // src={}
                 >
                   Upload
                 </div>
@@ -77,20 +100,20 @@ const SignUpInfo = ({ title1, title2, User }) => {
         <Wrapper>
           <Title>부모 정보</Title>
           <ProFileWrapper>
-            <Item label='이름'>
-              <InputArea />
+            <Item label='이름' name='name'>
+              <InputArea className='name' />
             </Item>
-            <Item label='주소'>
-              <InputArea />
+            <Item label='주소' name='address'>
+              <InputArea className='address' />
             </Item>
-            <Item label='직업'>
-              <InputArea />
+            <Item label='직업' name='job'>
+              <InputArea className='job' />
             </Item>
-            <Item label='직장정보'>
-              <InputArea />
+            <Item label='직장정보' name='jobinfo'>
+              <InputArea className='jobinfo' />
             </Item>
-            <Item label='상태메시지'>
-              <InputArea />
+            <Item label='상태메시지' name='stateComment'>
+              <InputArea className='stateComment' />
             </Item>
 
             <Item label='핸드폰 번호'>
@@ -120,30 +143,33 @@ const SignUpInfo = ({ title1, title2, User }) => {
               <PlusSquareOutlined
                 onClick={() => {
                   setChildren([...children, 1]);
+                  console.log(children);
                 }}
               />
             </span>
           </h4>
 
           <div>
-            {children.map((child, id) => (
+            {children.map((child) => (
               <ProFileWrapper>
-                <ChildInformation key={id} child={child} />
+                <ChildInformation
+                  key={child.childId}
+                  child={child}
+                  onSubmit={onSubmit}
+                />
               </ProFileWrapper>
             ))}
           </div>
         </Wrapper>
-        {
-          (title1 = '회원가입' ? (
-            <Form.Item>
-              <Btn htmlType='submit'>작성완료</Btn>
-            </Form.Item>
-          ) : (
-            <Form.Item>
-              <Btn htmlType='submit'>수정완료</Btn>
-            </Form.Item>
-          ))
-        }
+        {title1 === '회원가입' ? (
+          <Form.Item>
+            <Btn htmlType='submit'>작성완료</Btn>
+          </Form.Item>
+        ) : (
+          <Form.Item>
+            <Btn htmlType='submit'>수정완료</Btn>
+          </Form.Item>
+        )}
       </SignUpPage>
     </>
   );
