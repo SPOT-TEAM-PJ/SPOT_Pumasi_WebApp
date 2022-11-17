@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store/configureStore';
 import './App.css';
 import 'antd/dist/antd.css';
 
@@ -45,34 +47,36 @@ function App() {
 
   return (
     <BrowserRouter>
-      {parseInt(windowSize) <= 450 ? (
-        <>
-          <div className='App'>
-            <Header />
-            <AppRoutes />
-          </div>
-          <div className='navWrapper'>
-            <Nav />
-          </div>
-        </>
-      ) : (
-        <>
-          <div className='Desktop_info'>
-            안녕하세요 방문해주셔서 감사합니다.
-            <br />
-            태블릿과 데스크탑 화면은 구현 예정입니다.
-          </div>
-          <div className='Desktop_wrapper'>
-            <DesktopTop />
+      <Provider store={store()}>
+        {parseInt(windowSize) <= 450 ? (
+          <>
             <div className='App'>
               <Header />
               <AppRoutes />
             </div>
-            <Nav />
-            <DesktopBottom />
-          </div>
-        </>
-      )}
+            <div className='navWrapper'>
+              <Nav />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className='Desktop_info'>
+              안녕하세요 방문해주셔서 감사합니다.
+              <br />
+              태블릿과 데스크탑 화면은 구현 예정입니다.
+            </div>
+            <div className='Desktop_wrapper'>
+              <DesktopTop />
+              <div className='App'>
+                <Header />
+                <AppRoutes />
+              </div>
+              <Nav />
+              <DesktopBottom />
+            </div>
+          </>
+        )}
+      </Provider>
     </BrowserRouter>
   );
 }

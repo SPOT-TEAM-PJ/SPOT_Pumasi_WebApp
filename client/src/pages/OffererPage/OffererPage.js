@@ -10,7 +10,8 @@ import {
   PostListHeader,
 } from './OffererPageStyles';
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { LOAD_POST_REQUEST } from '../../reducers/post';
 export const sampleDummy = [
   {
     id: 1,
@@ -37,8 +38,12 @@ export const sampleDummy = [
     date: '22.11.15',
   },
 ];
+
 const OffererPage = () => {
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
+
+  const { mainPosts } = useSelector((state) => state.post);
   useEffect(() => {
     var container = document.getElementById('kakaoMap');
     var options = {
@@ -47,6 +52,13 @@ const OffererPage = () => {
     };
     var map = new kakao.maps.Map(container, options);
   }, []);
+
+  // call datas
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_POST_REQUEST,
+  //   });
+  // }, []);
 
   return (
     <>
@@ -68,6 +80,14 @@ const OffererPage = () => {
               key={v.id}
             />
           ))}
+          {/* {mainPosts.map((v) => (
+            <PostListContent
+              type={v.postType}
+              title={v.content.postTitle}
+              date={v.date}
+              key={v.postId}
+            />
+          ))} */}
         </PostList>
       </OffererPageStyle>
     </>

@@ -228,5 +228,141 @@ export const dummyData = () => [
       },
     ],
   },
+];
 
+export const dummyPost = () => [
+  {
+    postId: 1,
+    userId: 1,
+    postType: 0, // 0 구인 1 구직
+    complement: false, // 마감 유무
+    date: '22.11.07',
+    content: {
+      serviceType: 0, // 0 등원, 1 하원
+      postTilte: '등원 구합니다.',
+      needCar: false, // false 무관, true 필요
+      startingPoint: '경희학성아파트',
+      endPoint: '행복이 어린이집',
+      startTime: '09.00',
+      postContent: '101동 1001호에서 행복이 어린이집 등교해주실분 구해요.',
+    },
+    message: [
+      {
+        postId: 1, // 게시글 id
+        otherId: 2,
+        comment: [
+          [
+            {
+              messageId: 1,
+              userId: 2,
+              content: '안녕하세요 사람 구하셨나요?',
+              date: '',
+            },
+            {
+              messageId: 1,
+              userId: 1,
+              content: '아니요',
+              date: '',
+            },
+            {
+              messageId: 1,
+              userId: 2,
+              content: '제가 하고 싶어요',
+              date: '',
+            },
+          ],
+          [
+            {
+              messageId: 2,
+              userId: 3,
+              content: '안녕하세요 사람 구하셨나요?',
+              date: '',
+            },
+            {
+              messageId: 2,
+              userId: 1,
+              content: '아니요',
+              date: '',
+            },
+          ],
+        ],
+      },
+      {
+        postId: 2,
+        userId: 2,
+        postType: 1, // 0 구인 1 구직
+        complement: false, // 마감 유무
+        date: '22.11.09',
+        content: {
+          serviceType: 0, // 0 등원, 1 하원
+          postTilte: '등원 해드립니다.',
+          needCar: false, // false 무관, true 필요
+          startingPoint: '경희학성아파트',
+          endPoint: '행복이어린이집',
+          startTime: '09.00',
+          postContent: '행복이 어린이집에서 등원 해드립니다.',
+        },
+        message: [
+          {
+            postId: 2,
+            otherId: 1,
+            comment: [
+              [
+                {
+                  messageId: 1,
+                  userId: 1,
+                  content: '안녕하세요 등원 부탁드려도 될까요?',
+                  date: '',
+                },
+                {
+                  messageId: 1,
+                  userId: 2,
+                  content: '네!',
+                  date: '',
+                },
+                {
+                  messageId: 1,
+                  userId: 1,
+                  content:
+                    '오전 9시에 경희학성에서 행복이 어린이 집까지 부탁드릴게요!',
+                  date: '',
+                },
+              ],
+              [
+                {
+                  messageId: 2,
+                  userId: 3,
+                  content: '안녕하세요 등원 부탁드려도 될까요?',
+                  date: '',
+                },
+                {
+                  messageId: 2,
+                  userId: 1,
+                  content: '죄송합니다. 먼저 부탁해주신분이 있어서요ㅠㅠ',
+                  date: '',
+                },
+              ],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    postId: 3,
+    userId: 3,
+    postType: 1, // 0 구인 1 구직
+    complement: false, // 마감 유무
+    date: '22.11.09',
+    content: {
+      serviceType: 0, // 0 등원, 1 하원
+      postTilte: '등원 해드립니다.',
+      needCar: false, // false 무관, true 필요
+      startingPoint: '경희학성아파트',
+      endPoint: '행복이어린이집',
+      startTime: '09.00',
+      postContent: '행복이 어린이집에서 등원 해드립니다.',
+    },
+    message: [],
+  },
 ];
