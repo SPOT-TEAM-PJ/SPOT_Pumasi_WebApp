@@ -21,7 +21,7 @@ const Nav = () => {
         <EditOutlined />
         <NavDescription>작성글</NavDescription>
       </NavItem>
-      <NavItem onClick={() => navigate('/massage')}>
+      <NavItem onClick={() => navigate('/message')}>
         <MailOutlined />
         <NavDescription>쪽지</NavDescription>
       </NavItem>

@@ -1,4 +1,4 @@
-import { all, fork, put, takeLatest, call } from 'redux-saga/effects';
+import { all, fork, put, takeLatest, call, delay } from 'redux-saga/effects';
 import axios from 'axios';
 import {
   LOG_IN_FAILURE,
@@ -10,19 +10,19 @@ import {
   SIGN_UP_FAILURE,
   SIGN_UP_SUCCESS,
   SIGN_UP_REQUEST,
+  EDIT_MYINFO_SUCCESS,
+  EDIT_MYINFO_FAILURE,
+  EDIT_CHILD_SUCCESS,
+  EDIT_CHILD_FAILURE,
 } from '../reducers/user';
 
-
 // LogIn
-function logInAPI(data) {
-  return axios.post('/user/login', data);
-}
 function* logIn(action) {
   try {
-    const result = yield call(logInAPI, action.data);
+    yield delay(1000);
     yield put({
       type: LOG_IN_SUCCESS,
-      data: result.data,
+      data: action.data,
     });
   } catch (err) {
     console.error(err);
@@ -70,6 +70,42 @@ function* signUp(action) {
   }
 }
 
+// Edit Myinfo
+
+function* edit(action) {
+  try {
+    yield delay(1000);
+    yield put({
+      type: EDIT_MYINFO_SUCCESS,
+      data: action.data,
+    });
+  } catch (err) {
+    console.error(err);
+    yield put({
+      type: EDIT_MYINFO_FAILURE,
+      error: err.response.data,
+    });
+  }
+}
+
+// Edit Child
+
+function* editchild(action) {
+  try {
+    yield delay(1000);
+    yield put({
+      type: EDIT_CHILD_SUCCESS,
+      data: action.data,
+    });
+  } catch (err) {
+    console.error(err);
+    yield put({
+      type: EDIT_CHILD_FAILURE,
+      error: err.response.data,
+    });
+  }
+}
+
 // Event Listener와 비슷한 역할
 function* watchLogIn() {
   yield takeLatest(LOG_IN_REQUEST, logIn);
@@ -80,11 +116,18 @@ function* watchLogOut() {
 function* watchSignUP() {
   yield takeLatest(SIGN_UP_REQUEST, signUp);
 }
-
+function* watchEdit() {
+  yield takeLatest(EDIT_MYINFO_SUCCESS, edit);
+}
+function* watchEditChild() {
+  yield takeLatest(EDIT_CHILD_SUCCESS, editchild);
+}
 export default function* userSaga() {
   yield all([
     fork(watchLogIn),
     fork(watchLogOut),
     fork(watchSignUP),
+    fork(watchEdit),
+    fork(watchEditChild),
   ]);
 }

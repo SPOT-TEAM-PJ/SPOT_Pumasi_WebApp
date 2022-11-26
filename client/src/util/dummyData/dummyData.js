@@ -16,6 +16,7 @@ export const dummyData = () => [
       stateComment: 'test post 1',
       email: 'test1@gmail.com',
       address: '충청남도 아산시 신창면',
+
       image: '/',
     },
     children: [
@@ -80,7 +81,7 @@ export const dummyData = () => [
                 {
                   messageId: 2,
                   userId: 3,
-                  content: '안녕하세요 사람 구하셨나요?',
+                  content: '사람 구하셨나요?',
                   date: '',
                 },
                 {
