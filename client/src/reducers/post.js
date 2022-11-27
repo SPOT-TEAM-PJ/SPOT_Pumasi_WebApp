@@ -2,6 +2,7 @@ import produce from '../util/produce';
 
 export const initialState = {
   mainPosts: [],
+  offererPosts: [],
   singlePost: null,
   imagePaths: [],
   loadPostLoading: false,
@@ -41,21 +42,21 @@ const reducer = (state = initialState, action) =>
         draft.loadPostLoading = false;
         draft.loadPostError = action.error;
         break;
-      // case LOAD_OFFERER_POST_REQUEST:
-      //   draft.loadPostLoading = true;
-      //   draft.loadPostDone = false;
-      //   draft.loadPostError = null;
-      //   break;
-      // case LOAD_OFFERER_POST_SUCCESS:
-      //   draft.loadPostLoading = false;
-      //   draft.loadPostDone = true;
-      //   draft.mainPosts = action.data.concat(draft.mainPosts);
-      //   break;
-      // case LOAD_OFFERER_POST_FAILURE:
-      //   draft.loadPostLoading = false;
-      //   draft.loadPostError = action.error;
-      //   break;
-        
+      case LOAD_OFFERER_POST_REQUEST:
+        draft.loadPostLoading = true;
+        draft.loadPostDone = false;
+        draft.loadPostError = null;
+        break;
+      case LOAD_OFFERER_POST_SUCCESS:
+        draft.loadPostLoading = false;
+        draft.loadPostDone = true;
+        draft.mainPosts = action.data.filter((v) => v.postType === 1);
+        break;
+      case LOAD_OFFERER_POST_FAILURE:
+        draft.loadPostLoading = false;
+        draft.loadPostError = action.error;
+        break;
+
       // case ADD_POST_REQUEST:
       //   draft.addPostLoading = true;
       //   draft.addPostDone = false;
@@ -70,7 +71,6 @@ const reducer = (state = initialState, action) =>
       // case ADD_POST_FAILURE:
       //   draft.addPostLoading = false;
       //   draft.addPostError = action.error;
-        break;
       default:
         break;
     }

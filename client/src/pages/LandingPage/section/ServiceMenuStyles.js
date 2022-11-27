@@ -7,10 +7,9 @@ export const ServiceMenuWrapper = styled.div`
   }
 `;
 export const MenuGrop = styled.div`
-  background-color: #b8e8fc;
+  background-color: #0096FF;
   padding: 10px;
   display: flex;
-  border-radius: 10px;
 `;
 export const InfoWrapper = styled.div`
   width: 30%;
@@ -33,5 +32,5 @@ export const ServiceButton = styled(Button)`
   margin-top: 2px;
   margin-bottom: 2px;
   border: none;
-  background-color: #b1afff;
+  background-color: #E6BA95;
 `;

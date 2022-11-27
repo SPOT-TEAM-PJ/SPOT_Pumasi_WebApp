@@ -2,13 +2,12 @@ import styled from 'styled-components';
 
 export const LandingBannerForm = styled.div`
   width: 100%;
-  aspect-ratio: 16/8;
+  aspect-ratio: 1920/1540;
   margin-top: 10px;
 
   .swiper {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
   }
 
   .swiper-slide {
@@ -37,11 +36,8 @@ export const LandingBannerForm = styled.div`
   }
 `;
 
-export const FirstBanner = styled.div`
-  background-color: #c8ffd4 ;
+export const BannerWrapper = styled.div`
   img {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
   }
 `;

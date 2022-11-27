@@ -14,7 +14,7 @@ export const PostContent = styled.div`
 `;
 export const ContentTypeImage = styled.div`
   aspect-ratio: 1/1;
-  background-color: #c8ffd4;
+  background-color: #FEB139;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const OffererPageStyle = styled.div`
-  background-color: #fdfdbd;
   border-radius: 10px;
   padding-top: 5px;
 `;

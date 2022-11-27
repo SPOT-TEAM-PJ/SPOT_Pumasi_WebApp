@@ -1,25 +1,20 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, Children } from 'react';
 import { useDispatch } from 'react-redux';
-
+import child2 from '../../util/images/child2.jpg';
 import {
-  Form,
   Radio,
-  RadioChangeEvent,
   Cascader,
   Switch,
   TimePicker,
   Checkbox,
-  Avatar,
   Calendar,
   Button,
   Input,
 } from 'antd';
+import { options } from './ServiceOptions';
+import { UploadOutlined } from '@ant-design/icons';
+import { FormWrapper, ChildImageForm, FormItem } from './PostContentFormStyle';
 
-import { UserOutlined } from '@ant-design/icons';
-
-import styled from 'styled-components';
-
-export const FormWrapper = styled(Form)``;
 const PostContentForm = () => {
   const { TextArea } = Input;
 
@@ -47,45 +42,7 @@ const PostContentForm = () => {
   const onchangeSetServiceTypes = (RadioChangeEvent) => {
     console.log('');
   };
-  const options = [
-    {
-      value: 'zhejiang',
-      label: 'kage',
-      children: [
-        {
-          value: 'hangzhou',
-          label: 'Hangzhou',
-          children: [
-            {
-              value: 'xihu',
-              label: 'West Lake',
-            },
-            {
-              value: 'xiasha',
-              label: 'Xia Sha',
-              disabled: true,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      value: 'jiangsu',
-      label: 'Jiangsu',
-      children: [
-        {
-          value: 'nanjing',
-          label: 'Nanjing',
-          children: [
-            {
-              value: 'zhonghuamen',
-              label: 'Zhong Hua men',
-            },
-          ],
-        },
-      ],
-    },
-  ];
+
   const onChange = (value, selectedOptions) => {
     console.log(value, selectedOptions);
   };
@@ -100,25 +57,20 @@ const PostContentForm = () => {
   const onTimeChange = (time, timeString) => {
     console.log(time, timeString);
   };
-
   const onFinish = (values) => {
     console.log('Success:', values);
   };
+
   return (
     <FormWrapper layout='horizontal' onFinish={onFinish}>
-      <FormWrapper.Item label='아동 사진' name='ChildrenAvater'>
-        <Avatar size={64} icon={<UserOutlined />} />
-      </FormWrapper.Item>
-      <FormWrapper.Item lable='게시글 제목' name='postTitle'>
+      <ChildImageForm label='아동 사진' name='ChildrenAvater'>
+        <img src={child2} alt='child' />
+        <Button icon={<UploadOutlined />}>다른 사진 업로드</Button>
+      </ChildImageForm>
+      <FormItem label='게시글 제목' name='postTitle'>
         <Input placeholder='postTitle' />
-      </FormWrapper.Item>
-      <FormWrapper.Item lable='학부모 이름' name='parentName'>
-        <Input placeholder='parentName' />
-      </FormWrapper.Item>
-      <FormWrapper.Item lable='아동 이름' name='childrenName'>
-        <Input placeholder='childrenName' />
-      </FormWrapper.Item>
-      <FormWrapper.Item lable='원하는 서비스' name='serviceType'>
+      </FormItem>
+      <FormItem label='원하는 서비스' name='serviceType'>
         <Radio.Group
           onchangeSetServiceTypes={onchangeSetServiceTypes}
           defaultValue='a'
@@ -132,11 +84,12 @@ const PostContentForm = () => {
             병원 동행
           </Radio.Button>
         </Radio.Group>
-      </FormWrapper.Item>
-      <FormWrapper.Item lable='자동차 필요 유무' name='needCar'>
+      </FormItem>
+
+      <FormItem label='자동차 필요 유무' name='needCar'>
         <Switch className='switch' defaultChecked onChange={onToggleCar} />
-      </FormWrapper.Item>
-      <FormWrapper.Item lable='시작 지점' name='startPoint'>
+      </FormItem>
+      <FormItem label='시작 지점' name='startPoint'>
         <Cascader
           className='Cascader'
           options={options}
@@ -147,8 +100,8 @@ const PostContentForm = () => {
           }}
           onSearch={(value) => console.log(value)}
         />
-      </FormWrapper.Item>
-      <FormWrapper.Item lable='종료 지점' name='endPoint'>
+      </FormItem>
+      <FormItem label='종료 지점' name='endPoint'>
         <Cascader
           className='Cascader'
           options={options}
@@ -159,31 +112,37 @@ const PostContentForm = () => {
           }}
           onSearch={(value) => console.log(value)}
         />
-      </FormWrapper.Item>
-      <FormWrapper.Item lable='다른 날짜 선택' name='checkAnotherDate'>
+      </FormItem>
+      <FormItem label='다른 날짜 선택' name='checkAnotherDate'>
+        <>미 선택시 당일 지정 </>
         <Checkbox
           checked={DateForm}
           onChange={(e) => setDateForm(e.target.checked)}
         />
-      </FormWrapper.Item>
+      </FormItem>
       {DateForm ? (
-        <FormWrapper.Item lable='날짜 지정' name='anotherDate'>
+        <FormItem label='날짜 지정' name='anotherDate'>
           <Calendar fullscreen={false} onPanelChange={onPanelChange} />
-        </FormWrapper.Item>
+        </FormItem>
       ) : null}
-      <FormWrapper.Item lable='원하는 시간' name='time'>
-        <TimePicker use12Hours format='h:mm a' onChange={onTimeChange} />
-      </FormWrapper.Item>
-      <FormWrapper.Item lable='내용' name='content'>
+      <FormItem label='원하는 시간' name='time'>
+        <TimePicker.RangePicker onChange={onTimeChange} />
+      </FormItem>
+      <FormItem label='금액' name='money'>
+        <Input></Input>
+      </FormItem>
+
+      <FormItem label='내용' name='content'>
         <TextArea rows={4} />
-      </FormWrapper.Item>
-      <FormWrapper.Item name='submit'>
+      </FormItem>
+      <FormItem name='submit'>
         <Button type='primary' htmlType='submit'>
-          Submit
+          작성
         </Button>
-      </FormWrapper.Item>
+      </FormItem>
     </FormWrapper>
   );
 };
 
 export default PostContentForm;
+// 시간 날짜 금액 차량 지점
