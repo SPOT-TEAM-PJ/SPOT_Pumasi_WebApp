@@ -46,7 +46,6 @@ const MessagePage = () => {
             content={comment.map((comment) => {
               return [{ content: comment.content, userId: comment.userId }];
             })}
-            //userId={comment.map((comment) => comment.userId)}
           />
         ))}
       </PostList>
