@@ -4,13 +4,14 @@ export const NavWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, auto);
   gap: 2%;
-  border-top: solid #E2DCC8 1.5px;
+  border-top: solid #e2dcc8 1.5px;
   padding-top: 8px;
   padding-bottom: 8px;
   background-color: #0096ff;
   box-shadow: 0px 8px 6px -6px #aeaaaa;
   width: 100%;
-  height: 57px;
+  height: 45px;
+  font-size: 0.7rem;
   color: #fff;
 `;
 

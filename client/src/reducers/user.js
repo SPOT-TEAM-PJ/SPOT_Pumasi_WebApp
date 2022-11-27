@@ -1,4 +1,5 @@
 import produce from '../util/produce';
+import { dummyLogin } from '../util/dummyData/dummyLogin';
 
 export const initialState = {
   logOutLoading: false,
@@ -7,40 +8,7 @@ export const initialState = {
   signUpLoading: false,
   signUpDone: false,
   signUpError: null,
-  me: {
-    id: 1,
-    userId: 1, //아이디
-    password: 1234,
-    parent: {
-      name: '이선정',
-      nickname: '시후맘',
-      job: '프리랜서',
-      jobinfo: '아산',
-      phoneNumber: '010-1234-5678',
-      stateComment: 'test post 1',
-      email: 'test1@gmail.com',
-      address: '충청남도 아산시 신창면',
-      image: '/',
-    },
-    children: [
-      {
-        childId: 1,
-        school: '행복이 어린이집',
-        age: 5,
-        childrenname: '김시후',
-        gender: '남자',
-        image: '/',
-      },
-      {
-        childId: 2,
-        school: '행복이 어린이집',
-        age: 7,
-        childrenname: '이소은',
-        gender: '여자',
-        image: '/',
-      },
-    ],
-  },
+  me: null,
   userInfo: null,
 };
 
@@ -73,8 +41,7 @@ const reducer = (state = initialState, action) => {
       case LOG_IN_SUCCESS:
         draft.logInLoading = false;
         draft.logInDone = true;
-        draft.me = action.data;
-        
+        draft.me = dummyLogin();
         break;
       case LOG_IN_FAILURE:
         draft.logInLoading = false;
