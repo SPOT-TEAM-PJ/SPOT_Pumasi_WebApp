@@ -32,7 +32,7 @@ function ProfileInfo({ type, parent, ...child }) {
         <Avatar src={Image} style={{ margin: '15px 0px' }} size={80} />
         {type === 'child' ? (
           <InfoWrapper>
-            <div>이름: {child.name}</div>
+            <div>이름: {child.childrenname}</div>
             <div>나이: {child.age}</div>
             <div>성별: {child.gender}</div>
             <div>어린이집: {child.school}</div>
