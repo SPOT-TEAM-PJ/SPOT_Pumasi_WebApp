@@ -17,6 +17,7 @@ import OffererPage from './pages/OffererPage/OffererPage';
 import ProfileEditPage from './pages/MyPage/ProfileEditPage';
 import ProfilePage from './pages/MyPage/ProfilePage';
 import OffererPost from './pages/OffererPage/section/OffererPost';
+import MyPostList from './pages/MyPostList/MyPostList';
 
 function App() {
   // resize event를 통해 반응형웹 구현
@@ -41,6 +42,7 @@ function App() {
         <Route path='/offererpost' element={<OffererPost />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/edit' element={<ProfileEditPage />} />
+        <Route path='/mypostlist' element={<MyPostList />} />
       </Routes>
     );
   }

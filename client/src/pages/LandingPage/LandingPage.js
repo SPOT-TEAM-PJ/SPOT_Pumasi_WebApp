@@ -4,18 +4,13 @@ import AddonForm from '../../components/AddOn/AddonForm';
 import LandingBanner from './section/LandingBanner';
 import ServiceMenu from './section/ServiceMenu';
 
-const LandingWrapper = styled.div`
-  background-color: #fdfdbd;
-  padding: 10px;
-  border-radius: 10px;
-`;
 const LandingPage = () => {
   return (
-    <LandingWrapper>
+    <div>
       <LandingBanner />
       <ServiceMenu />
       <AddonForm />
-    </LandingWrapper>
+    </div>
   );
 };
 

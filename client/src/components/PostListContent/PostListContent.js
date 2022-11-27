@@ -12,7 +12,7 @@ import {
 } from './PostListContentStyles';
 import PostContentModal from '../PostContentModal/PostContentModal';
 
-const PostListContent = ({ post, user, type, title, date }) => {
+const PostListContent = ({ data, type, title, date }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
@@ -32,7 +32,9 @@ const PostListContent = ({ post, user, type, title, date }) => {
           <ContentRequest icon={<MessageOutlined />} />
         </ContentItem>
       </PostContent>
-      {modalOpen && <PostContentModal setModalOpen={setModalOpen} />}
+      {modalOpen && (
+        <PostContentModal setModalOpen={setModalOpen} data={data} />
+      )}
     </>
   );
 };

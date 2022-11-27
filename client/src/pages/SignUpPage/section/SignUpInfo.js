@@ -116,7 +116,6 @@ const SignUpInfo = ({ title1, title2, User }) => {
           <h4 style={{ paddingLeft: '10px', paddingTop: '7px' }}>
             자녀
             <span>
-              {' '}
               <PlusSquareOutlined
                 onClick={() => {
                   setChildren([...children, 1]);

@@ -44,108 +44,91 @@ export const fadeIn = keyframes`
   }
 `;
 export const TopBar = styled.div`
+  background-color: #0096ff;
+  height: 35px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
   .modalClose {
     cursor: pointer;
   }
 `;
+
 export const ChildrenImgArea = styled.div`
-  width: 70%;
-  aspect-ratio: 1/1;
+  width: 100%;
+  aspect-ratio: 1280/853;
   background-color: beige;
-  border-radius: 50%;
+  overflow: hidden;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 `;
 export const ContentArea = styled.div`
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: beige;
-  border-radius: 10px;
-  padding: 10px;
-
-  .postTitle {
-    width: 100%;
-    height: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    margin-bottom: 10px;
+  background-color: #e2e2e2;
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 10px;
+`;
+export const PostTitle = styled.div`
+  text-align: center;
+  margin-bottom: 5px;
+`;
+export const NickName = styled.div`
+  text-align: right;
+  margin-right: 10px;
+  margin-bottom: 5px;
+`;
+export const PostInfo = styled.table`
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  img {
+    width: 15px;
+    aspect-ratio: 1/1;
+    margin-right: 5px;
+  }
+  .column {
+    width: 60px;
+    color: #0096ff;
+    border-right: 2px #808080 solid;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  .lastTr {
+    border-bottom: 2px #808080 solid;
+  }
+  .data {
+    padding-left: 5px;
     display: flex;
     align-items: center;
-    justify-content: center;
   }
 `;
-export const UserInfo = styled.div`
+export const ContentTitle = styled.div`
+  color: #323232;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+`;
+export const PostContent = styled.div`
+  margin-bottom: 20px;
+  .textArea {
+    width: 100%;
+    border-radius: 5px;
+  }
+`;
+export const ButtonGroup = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
-
-  .nameInput {
-    width: 47%;
-    height: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-export const PostInfo = styled.div`
-  .postInfo {
-    float: right;
-  }
-`;
-export const ContentInfo = styled.div``;
-
-export const ServiceTypeArea = styled.div`
-  .ant-radio-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  .ant-radio-button-wrapper {
-    border-radius: 10px;
-    border: none;
-  }
-  .ant-radio-button-wrapper::before {
-    width: 0;
-  }
-`;
-
-export const MoveArea = styled.div`
-  display: flex;
-  width: 100%;
-  .needCarWrapper {
-    text-align: center;
-    width: 20%;
-  }
-  .carToggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .cascaderWrapper {
-    text-align: center;
-    width: 35%;
-    .Cascader {
-      width: 100%;
-    }
-  }
-  .arrowWrapper {
-    width: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    img {
-      width: 100%;
-    }
-  }
 `;

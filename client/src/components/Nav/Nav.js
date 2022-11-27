@@ -17,7 +17,7 @@ const Nav = () => {
         <HomeOutlined />
         <NavDescription>홈</NavDescription>
       </NavItem>
-      <NavItem onClick={() => navigate('/post')}>
+      <NavItem onClick={() => navigate('/mypostlist')}>
         <EditOutlined />
         <NavDescription>작성글</NavDescription>
       </NavItem>
