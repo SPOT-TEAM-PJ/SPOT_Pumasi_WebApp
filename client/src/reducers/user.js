@@ -1,16 +1,46 @@
 import produce from '../util/produce';
 
 export const initialState = {
-  logInLoading: false,
-  logInDone: false,
-  logInError: null,
   logOutLoading: false,
   logOutDone: false,
   logOutError: null,
   signUpLoading: false,
   signUpDone: false,
   signUpError: null,
-  me: null,
+  me: {
+    id: 1,
+    userId: 1, //아이디
+    password: 1234,
+    parent: {
+      name: '이선정',
+      nickname: '시후맘',
+      job: '프리랜서',
+      jobinfo: '아산',
+      phoneNumber: '010-1234-5678',
+      stateComment: 'test post 1',
+      email: 'test1@gmail.com',
+      address: '충청남도 아산시 신창면',
+      image: '/',
+    },
+    children: [
+      {
+        childId: 1,
+        school: '행복이 어린이집',
+        age: 5,
+        childrenname: '김시후',
+        gender: '남자',
+        image: '/',
+      },
+      {
+        childId: 2,
+        school: '행복이 어린이집',
+        age: 7,
+        childrenname: '이소은',
+        gender: '여자',
+        image: '/',
+      },
+    ],
+  },
   userInfo: null,
 };
 
@@ -26,8 +56,14 @@ export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 
-const reducer = (state = initialState, action) =>
-  produce(state, (draft) => {
+export const EDIT_MYINFO_SUCCESS = 'EDIT_MYINFO_SUCCESS';
+export const EDIT_MYINFO_FAILURE = 'EDIT_MYINFO_FAILURE';
+
+export const EDIT_CHILD_SUCCESS = 'EDIT_CHILD_SUCCESS';
+export const EDIT_CHILD_FAILURE = 'EDIT_CHILD_FAILURE';
+
+const reducer = (state = initialState, action) => {
+  return produce(state, (draft) => {
     switch (action.type) {
       case LOG_IN_REQUEST:
         draft.logInLoading = true;
@@ -71,9 +107,34 @@ const reducer = (state = initialState, action) =>
         draft.signUpLoading = false;
         draft.signUpError = action.error;
         break;
+      case EDIT_MYINFO_SUCCESS:
+        draft.me.parent.name = action.data.name;
+        draft.me.parent.address = action.data.address;
+        draft.me.parent.job = action.data.job;
+        draft.me.parent.jobinfo = action.data.jobinfo;
+        draft.me.parent.stateComment = action.data.stateComment;
+        draft.me.parent.jobinfo = action.data.jobinfo;
+        break;
+      case EDIT_MYINFO_FAILURE:
+        draft.signUpLoading = false;
+        draft.signUpError = action.error;
+        break;
+      case EDIT_CHILD_SUCCESS:
+        const child = draft.me.children.find(
+          (child) => child.childId === action.data.childId
+        );
+        child.childrenname = action.data.childrenname;
+        child.age = action.data.age;
+        child.gender = action.data.gender;
+        child.school = action.data.school;
+        break;
+      case EDIT_CHILD_FAILURE:
+        draft.signUpLoading = false;
+        draft.signUpError = action.error;
+        break;
       default:
         break;
     }
   });
-
+};
 export default reducer;

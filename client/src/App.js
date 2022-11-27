@@ -18,6 +18,9 @@ import ProfileEditPage from './pages/MyPage/ProfileEditPage';
 import ProfilePage from './pages/MyPage/ProfilePage';
 import OffererPost from './pages/OffererPage/section/OffererPost';
 import MyPostList from './pages/MyPostList/MyPostList';
+import LoginPage from './pages/LoginPage/LoginPage';
+import MessagePage from './pages/MessagePage/MessagePage';
+import ChatPage from './pages/MessagePage/ChatPage';
 
 function App() {
   // resize event를 통해 반응형웹 구현
@@ -38,10 +41,13 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/signup' element={<SignUpPage />} />
+        <Route path='/login' element={<LoginPage />} />
         <Route path='/offerer' element={<OffererPage />} />
         <Route path='/offererpost' element={<OffererPost />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/edit' element={<ProfileEditPage />} />
+        <Route path='/message' element={<MessagePage />} />
+        <Route path='/chat' element={<ChatPage />} />
         <Route path='/mypostlist' element={<MyPostList />} />
       </Routes>
     );

@@ -16,6 +16,7 @@ export const dummyData = () => [
       stateComment: 'test post 1',
       email: 'test1@gmail.com',
       address: '충청남도 아산시 신창면',
+
       image: '/',
     },
     children: [
@@ -23,7 +24,7 @@ export const dummyData = () => [
         childId: 1,
         school: '행복이 어린이집',
         age: 5,
-        name: '김시후',
+        childrenname: '김시후',
         gender: '남자',
         image: '/',
       },
@@ -31,7 +32,7 @@ export const dummyData = () => [
         childId: 2,
         school: '행복이 어린이집',
         age: 7,
-        name: '이소은',
+        childrenname: '이소은',
         gender: '여자',
         image: '/',
       },
@@ -80,7 +81,7 @@ export const dummyData = () => [
                 {
                   messageId: 2,
                   userId: 3,
-                  content: '안녕하세요 사람 구하셨나요?',
+                  content: '사람 구하셨나요?',
                   date: '',
                 },
                 {
@@ -117,7 +118,7 @@ export const dummyData = () => [
         childId: 2,
         school: '행복이어린이집',
         age: 5,
-        name: '정수민',
+        childrenname: '정수민',
         gender: '여자',
         image: '/',
       },
@@ -204,7 +205,7 @@ export const dummyData = () => [
         childId: 3,
         school: '행복이어린이집',
         age: 5,
-        name: '김수정',
+        childrenname: '김수정',
         gender: '여자',
         image: '/',
       },
