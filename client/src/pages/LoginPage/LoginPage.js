@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Button, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { LOG_IN_SUCCESS } from '../../reducers/user';
+import { LOG_IN_REQUEST, LOG_IN_SUCCESS } from '../../reducers/user';
 import { useNavigate, Link } from 'react-router-dom';
 import LogoImg from '../../util/images/FumasiLogoInfo.png';
 import { Logo, LoginBtn, LoginForm, FormItem, SignUp } from './LoginPageStyles';
@@ -10,7 +10,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { me } = useSelector((state) => state.user);
-
+  console.log('landing: ', me);
   const onSubmit = (values) => {
     // console.log(values);
     // if (
@@ -19,15 +19,19 @@ const LoginPage = () => {
     // ) {
     console.log('로그인 성공!');
     dispatch({
-      type: LOG_IN_SUCCESS,
+      type: LOG_IN_REQUEST,
       // data: { id: values.id, password: values.password },
     });
     console.log('me: ', me);
-    navigate('/');
     // } else {
     //   alert('아이디 또는 비밀번호를 확인해주세요.');
     // }
   };
+  useEffect(() => {
+    if (me) {
+      navigate('/');
+    }
+  }, [me]);
 
   return (
     <>
