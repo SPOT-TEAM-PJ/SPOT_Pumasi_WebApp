@@ -4,6 +4,9 @@ import Logo from '../../util/images/FumasiLogo.png';
 
 import { BellOutlined } from '@ant-design/icons';
 import { Button, Badge } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { LOG_OUT_REQUEST } from '../../reducers/user';
+import { useNavigate } from 'react-router-dom';
 
 const HeaderStyle = styled.div`
   height: 55px;
@@ -27,16 +30,43 @@ const UnderLine = styled.div`
   margin-right: auto;
   margin-bottom: 10px;
 `;
-
-// dummy state
-const user = true;
+const Info = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #808080;
+  .welcom {
+    font-size: 12px;
+  }
+  margin-bottom: 5px;
+`;
+const LogOutBtn = styled(Button)`
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 15px;
+`;
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { me } = useSelector((state) => state.user);
+  const onClickBtn = () => {
+    dispatch({
+      type: LOG_OUT_REQUEST,
+    });
+    navigate('/');
+  };
+
   return (
     <>
       <HeaderStyle>
         <img src={Logo} alt='logo' />
-        {user && (
+        {me && (
           <Button
             shape='circle'
             size='large'
@@ -46,6 +76,14 @@ const Header = () => {
         )}
       </HeaderStyle>
       <UnderLine />
+      {me && (
+        <Info>
+          <div className='welcom'>{`${me.parent.name}님 환영합니다!`}</div>
+          <LogOutBtn danger onClick={onClickBtn}>
+            LogOut
+          </LogOutBtn>
+        </Info>
+      )}
     </>
   );
 };
