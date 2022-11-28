@@ -2,6 +2,7 @@ import React from 'react';
 import ProfileInfo from './section/ProfileInfo';
 import styled from 'styled-components';
 import { dummyData } from '../../util/dummyData/dummyData';
+import { useLocation } from 'react-router';
 
 const ProfileWrapper = styled.div`
   margin: 10% 0;
@@ -21,19 +22,24 @@ const ProfileInfoWrapper = styled.div`
   border-radius: 10px;
 `;
 
-const parent = dummyData()[0].parent;
-const children = [...dummyData()[0].children];
+// const parent = dummyData()[0].parent;
+// const children = [...dummyData()[0].children];
 
 const ProfilePage = () => {
+  const { state } = useLocation();
+  console.log(state);
+  const dummydata = dummyData();
+  const user = dummydata.find((dummy) => dummy.userId === state);
+
   return (
     <ProfileWrapper>
       <ProfileInfoWrapper>
         <div>내 정보</div>
-        <ProfileInfo parent={parent} />
+        <ProfileInfo parent={user.parent} />
       </ProfileInfoWrapper>
       <ProfileInfoWrapper>
         <div>자녀 정보</div>
-        {children.map((child, idx) => (
+        {user.children.map((child, idx) => (
           <ProfileInfo key={child.id} type={'child'} {...child} />
         ))}
       </ProfileInfoWrapper>

@@ -21,6 +21,7 @@ import MyPostList from './pages/MyPostList/MyPostList';
 import LoginPage from './pages/LoginPage/LoginPage';
 import MessagePage from './pages/MessagePage/MessagePage';
 import ChatPage from './pages/MessagePage/ChatPage';
+import MyPage from './pages/MyPage/MyPage';
 
 function App() {
   // resize event를 통해 반응형웹 구현
@@ -49,6 +50,7 @@ function App() {
         <Route path='/message' element={<MessagePage />} />
         <Route path='/chat' element={<ChatPage />} />
         <Route path='/mypostlist' element={<MyPostList />} />
+        <Route path='/mypage' element={<MyPage />} />
       </Routes>
     );
   }
