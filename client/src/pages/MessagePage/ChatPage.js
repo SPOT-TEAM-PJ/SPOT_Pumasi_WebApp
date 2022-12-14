@@ -3,14 +3,14 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import ChatComponent from '../../components/MessageContent/ChatComponent';
-
+import { ServiceButton } from '../LandingPage/section/ServiceMenuStyles';
 const ChatPage = () => {
   const { state } = useLocation();
   const { me } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   console.log(state);
   const [message, setMessage] = useState('');
-
+  const [clickBtn, setClickBtn] = useState(false);
   const onSendMessage = useCallback(() => {
     console.log(message);
     // dispatch({
@@ -42,6 +42,29 @@ const ChatPage = () => {
           }}
         >
           {state.name}
+          {!clickBtn ? (
+            <>
+              <ServiceButton
+                type='primary'
+                style={{ width: '50px', marginLeft: '60px' }}
+                onClick={() => {
+                  setClickBtn(true);
+                }}
+              >
+                수락
+              </ServiceButton>
+              <ServiceButton style={{ width: '50px' }} type='primary'>
+                거절
+              </ServiceButton>
+            </>
+          ) : (
+            <ServiceButton
+              style={{ width: '50px', marginLeft: '110px' }}
+              type='primary'
+            >
+              도착
+            </ServiceButton>
+          )}
         </div>
         <div>
           {state.Content.map((content) =>
