@@ -15,14 +15,15 @@ import {
   EDIT_CHILD_SUCCESS,
   EDIT_CHILD_FAILURE,
 } from '../reducers/user';
-
+import { dummyLogin } from '../util/dummyData/dummyLogin';
 // LogIn
 function* logIn(action) {
   try {
+    const result = dummyLogin;
     yield delay(1000);
     yield put({
       type: LOG_IN_SUCCESS,
-      data: action.data,
+      data: result,
     });
   } catch (err) {
     console.error(err);
@@ -39,7 +40,8 @@ function logOutAPI() {
 }
 function* logOut() {
   try {
-    yield call(logOutAPI);
+    // yield call(logOutAPI);
+    yield delay(1000);
     yield put({
       type: LOG_OUT_SUCCESS,
     });
